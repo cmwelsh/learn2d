@@ -1,0 +1,22 @@
+{
+  "name": "learn2d-frontend",
+  "version": "0.0.1",
+  "description": "Online programming education",
+  "homepage": "https://www.learn2d.com",
+  "bugs": "https://github.com/learn2d/learn2d/issues",
+  "license": "Apache-2.0",
+  "author": "Learn2D, Inc. <info@learn2d.com> (https://www.learn2d.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/learn2d/learn2d.git"
+  },
+  "dependencies": {
+    "express": "~4.2.0",
+    "errorhandler": "~1.0.1",
+    "bookshelf": "~0.6.10",
+    "pg": "~3.1.0"
+  },
+  "devDependencies": {},
+  "engine": "node >= 0.10.28",
+  "os": "linux"
+}
