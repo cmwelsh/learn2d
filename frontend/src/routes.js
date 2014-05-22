@@ -1,8 +1,10 @@
 var path = require('path');
+var React = require('react');
 
 // Home page
 exports.index = function(req, res) {
-  res.send('hello world');
+  var Index = require('./views/site').index;
+  res.send(React.renderComponentToStaticMarkup(new Index()));
 };
 
 // Favicon
