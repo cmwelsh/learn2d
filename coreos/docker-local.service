@@ -1,0 +1,13 @@
+# systemd configuration
+# See http://coreos.com/using-coreos/systemd/ for more information
+
+[Unit]
+Description=docker local
+
+[Service]
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/systemctl kill docker.service
+ExecStart=/usr/bin/docker -d -H tcp://0.0.0.0:4244
+
+[Install]
+WantedBy=local.target

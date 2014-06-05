@@ -1,0 +1,12 @@
+frontend:
+  build: ./frontend
+  links:
+   - db
+  ports:
+   - "3000:3000"
+  volumes:
+   - "/home/core/share/frontend/src:/home/app/frontend/src"
+db:
+  build: ./database
+  ports:
+   - "5432:5432"
