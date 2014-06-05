@@ -6,6 +6,7 @@ frontend:
    - "3000:3000"
   volumes:
    - "/home/core/share/frontend/src:/home/app/frontend/src"
+   - "/home/core/share/frontend/assets:/home/app/frontend/assets"
 db:
   build: ./database
   ports:
