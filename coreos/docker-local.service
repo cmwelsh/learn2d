@@ -1,3 +1,6 @@
+# systemd configuration
+# See http://coreos.com/using-coreos/systemd/ for more information
+
 [Unit]
 Description=docker local
 

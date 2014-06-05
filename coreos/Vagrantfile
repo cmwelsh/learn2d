@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   # Use static IP for CoreOS VirtualBox VM
   config.vm.network :private_network, ip: "10.1.1.51"
 
-  # Mount the whole project folder in the CoreOS VM
+  # Mount the whole project folder in the CoreOS VM as a shared folder
   config.vm.synced_folder "../", "/home/core/share", id: "core", :nfs => true,  :mount_options   => ['nolock,vers=3,udp']
 
   # Uncomment if you want to map ports from CoreOS to Mac OS X
@@ -21,16 +21,12 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--memory", 1024]
   end
 
-  # @todo not sure what this does
-  # plugin conflict
+  # Disable VirtualBox Guest Additions auto-updater
   if Vagrant.has_plugin?("vagrant-vbguest") then
     config.vbguest.auto_update = false
   end
 
-  # @todo not sure what this does
-  # mkempster
-  # ask systemd to run docker in daemon mode on bootup
-  #https://gist.github.com/philips/7555876
+  # Start docker using systemd
   config.vm.provision "file", source: "docker-local.service", destination: "/tmp/docker-local.service"
   config.vm.provision "shell",  inline: "cp /tmp/docker-local.service /media/state/units/docker-local.service"
   config.vm.provision "shell",  inline: "sudo systemctl restart local-enable.service"
