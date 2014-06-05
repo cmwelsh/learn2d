@@ -38,12 +38,15 @@ ADD ./package.json /home/app/frontend/package.json
 # Change current working directory to Node.js application
 WORKDIR /home/app/frontend
 
+# Install Node.js command-line tool: node-supervisor
+RUN npm install -g supervisor@0.6.0
+
 # Install application
 # Redirect to /dev/null to fix https://github.com/orchardup/fig/issues/212
 RUN npm install > /dev/null
 
 # Launch application when launching the container
-ENTRYPOINT ["node", "/home/app/frontend/src/app.js"]
+ENTRYPOINT ["/home/app/frontend/frontend-development.sh"]
 
 # Run application as non-root user
 USER app
