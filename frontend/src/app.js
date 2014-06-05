@@ -1,6 +1,7 @@
 var errorhandler = require('errorhandler');
 var express = require('express');
 var http = require('http');
+var path = require('path');
 var routes = require('./routes');
 
 // Create Express application instance
@@ -8,6 +9,9 @@ var app = express();
 
 // Copy environment variables to application instance
 app.set('port', process.env.PORT || 3000);
+
+// Configure static files middleware
+app.use('/assets', express.static(path.resolve(__dirname, '../assets')));
 
 // Define HTTP routes
 app.get('/', routes.index);
