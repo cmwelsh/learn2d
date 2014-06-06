@@ -14,7 +14,7 @@ app.set('port', process.env.PORT || 3000);
 app.use('/assets', express.static(path.resolve(__dirname, '../assets')));
 
 // Define HTTP routes
-app.get('/', routes.index);
+app.get('/', routes.home);
 app.get('/favicon.ico', routes.favicon);
 
 // Development only middleware

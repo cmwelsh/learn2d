@@ -1,19 +1,21 @@
-var path = require('path');
-var React = require('react');
+'use strict';
 
+var Response = require('./lib/response');
 
-var render = function(res, component) {
-  var html = React.renderComponentToStaticMarkup(component);
-  res.send('<!DOCTYPE html>\n' + html);
+// Favicon
+var favicon = function(req, res) {
+  var response = new Response(res);
+  response.sendAsset('images/favicon.ico');
 };
 
 // Home page
-exports.index = function(req, res) {
-  var Index = require('./views/index');
-  render(res, new Index());
+var home = function(req, res) {
+  var response = new Response(res);
+  var Home = require('./views/pages/home');
+  response.render(new Home());
 };
 
-// Favicon
-exports.favicon = function(req, res) {
-  res.sendfile(path.resolve(__dirname + '/../public/images/favicon.ico'));
+module.exports = {
+  favicon: favicon,
+  home: home
 };
