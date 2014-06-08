@@ -13,15 +13,17 @@
   "browser": {
     "director": "./bower_components/director/build/director.js",
     "jquery": "./bower_components/jquery/dist/jquery.js",
-    "react": "./bower_components/react/react.js",
-  },
-  "browserify-shim": {
-    "director": "Router",
-    "jquery": "jQuery",
-    "react": "React"
+    "react": "./bower_components/react/react.js"
   },
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "director": "window",
+    "jquery": "jQuery",
+    "react": "React"
   },
   "dependencies": {
     "express": "~4.2.0",
@@ -32,7 +34,8 @@
     "js-beautify": "~1.5.1",
     "underscore": "~1.6.0",
     "browserify-middleware": "~3.0.0",
-    "browserify-shim": "~3.5.0"
+    "browserify-shim": "~3.5.0",
+    "director": "~1.2.2"
   },
   "devDependencies": {},
   "engine": "node >= 0.10.28",

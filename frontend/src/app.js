@@ -5,6 +5,8 @@ var errorhandler = require('errorhandler');
 var express = require('express');
 var http = require('http');
 var path = require('path');
+
+var router = require('./router');
 var routes = require('./routes');
 
 // Create Express application instance
@@ -17,11 +19,17 @@ app.set('port', process.env.PORT || 3000);
 app.use('/assets', express['static'](path.resolve(__dirname, '../assets')));
 app.use('/components', express['static'](path.resolve(__dirname, '../bower_components')));
 app.get('/custom.js', browserify(path.resolve(__dirname, './client/custom.js')));
-
-// Define HTTP routes
-app.get('/', routes.home);
-app.get('/about', routes.about);
 app.get('/favicon.ico', routes.favicon);
+
+// Configure routing middleware
+app.use(function(req, res, next) {
+  router.dispatch(req, res, function(err) {
+    if (err) {
+      console.log(err);
+      next();
+    }
+  });
+});
 
 // Development only middleware
 if (app.get('env') === 'development') {

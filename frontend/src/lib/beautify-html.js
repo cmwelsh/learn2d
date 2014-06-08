@@ -1,3 +1,5 @@
+'use strict';
+
 var beautifyHtmlFunc = require('js-beautify').html;
 var _ = require('underscore');
 
