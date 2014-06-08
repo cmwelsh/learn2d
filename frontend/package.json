@@ -35,7 +35,8 @@
     "underscore": "~1.6.0",
     "browserify-middleware": "~3.0.0",
     "browserify-shim": "~3.5.0",
-    "director": "~1.2.2"
+    "director": "~1.2.2",
+    "serve-favicon": "~2.0.1"
   },
   "devDependencies": {},
   "engine": "node >= 0.10.28",
