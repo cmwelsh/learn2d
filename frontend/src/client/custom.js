@@ -2,19 +2,8 @@
 
 var $ = require('jquery');
 
-var router = require('../router');
-
-router.configure({
-  html5history: true
+var Application = require('./application');
+var app = new Application({
+  container: $('.site-container').get(0)
 });
-router.init();
-
-$(document).on('click', 'a', function(event) {
-  var href = $(this).attr('href');
-
-  if (href.slice(0,1) === '/') {
-    event.preventDefault();
-
-    router.setRoute(href);
-  }
-});
+app.initialize();
