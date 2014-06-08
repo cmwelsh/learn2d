@@ -3,10 +3,7 @@
       "__dirname",
       "console",
       "module",
-      "require",
-      "process",
-      "window",
-      "document"
+      "require"
     ],
     "maxerr"        : 100,      // Maximum errors before stopping.
     "bitwise"       : true,     // Prohibit bitwise operators (&, |, ^, etc.).
@@ -14,7 +11,7 @@
     "es3"           : true,     // Warn about trailing comma on final item of object literal
     "immed"         : true,     // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
     "latedef"       : true,     // Prohibit variable use before definition.
-    "newcap"        : true,     // Require capitalization of all constructor functions e.g. `new F()`.
+    "newcap"        : false,    // Require capitalization of all constructor functions e.g. `new F()`.
     "noarg"         : true,     // Prohibit use of `arguments.caller` and `arguments.callee`.
     "noempty"       : true,     // Prohibit use of empty blocks.
     "nonew"         : true,     // Prohibit use of constructors for side-effects.
@@ -23,7 +20,7 @@
     "undef"         : true,     // Require all non-global variables be declared before they are used.
     "strict"        : true,     // Require `use strict` pragma in every file.
     "trailing"      : true,     // Prohibit trailing whitespaces.
-    "quotmark"      : "single", // Require single quotes.
+    "quotmark"      : false,    // Require single quotes.
     "unused"        : "vars",   // Warns when you define and never use your variables
     "maxdepth"      : 3,        // Warn about nesting depth
     "eqnull"        : true,     // Tolerate use of `== null`.

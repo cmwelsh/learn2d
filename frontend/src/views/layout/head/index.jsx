@@ -1,4 +1,5 @@
 /** @jsx React.DOM */
+'use strict';
 
 var React = require('react');
 
@@ -20,7 +21,7 @@ var Head = React.createClass({
         <NoJsFallback />
       </head>
     );
-  },
+  }
 });
 
 module.exports = Head;
