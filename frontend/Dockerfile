@@ -29,21 +29,31 @@ RUN apt-get update && apt-get install -y \
 # Clean up APT when done
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Install Node.js command-line tool: node-supervisor
+RUN npm install -g supervisor@0.6.0
+
+# Install Node.js command-line tool: Bower
+# Redirect to /dev/null to fix https://github.com/orchardup/fig/issues/212
+RUN npm install -g bower@1.3.3 > /dev/null
+
 # Create project directories on container
 RUN mkdir /home/app/frontend
-
-# Copy npm package.json dependencies
-ADD ./package.json /home/app/frontend/package.json
 
 # Change current working directory to Node.js application
 WORKDIR /home/app/frontend
 
-# Install Node.js command-line tool: node-supervisor
-RUN npm install -g supervisor@0.6.0
+# Copy npm package.json dependencies
+ADD ./package.json /home/app/frontend/package.json
 
-# Install application
+# Copy Bower bower.json dependencies
+ADD ./bower.json /home/app/frontend/bower.json
+
+# Install server application dependencies
 # Redirect to /dev/null to fix https://github.com/orchardup/fig/issues/212
 RUN npm install > /dev/null
+
+# Install client application dependencies
+RUN bower install --allow-root
 
 # Launch application when launching the container
 ENTRYPOINT ["/home/app/frontend/frontend-development.sh"]

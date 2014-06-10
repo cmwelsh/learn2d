@@ -1,0 +1,9 @@
+{
+  "name": "learn2d-frontend",
+  "version": "0.0.1",
+  "dependencies": {
+    "director": "~1.2.2",
+    "jquery": "~2.1.1",
+    "react": "~0.10.0"
+  }
+}

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Reload the code on-the-fly with node-supervisor
-supervisor /home/app/frontend/src/app.js
+supervisor -w ./src /home/app/frontend/src/server/custom.js

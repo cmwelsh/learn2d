@@ -10,12 +10,33 @@
     "type": "git",
     "url": "https://github.com/learn2d/learn2d.git"
   },
+  "browser": {
+    "director": "./bower_components/director/build/director.js",
+    "jquery": "./bower_components/jquery/dist/jquery.js",
+    "react": "./bower_components/react/react.js"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "director": "window",
+    "jquery": "jQuery",
+    "react": "React"
+  },
   "dependencies": {
     "express": "~4.2.0",
     "errorhandler": "~1.0.1",
     "bookshelf": "~0.6.10",
     "pg": "~3.1.0",
-    "react": "~0.10.0"
+    "react": "~0.10.0",
+    "js-beautify": "~1.5.1",
+    "underscore": "~1.6.0",
+    "browserify-middleware": "~3.0.0",
+    "browserify-shim": "~3.5.0",
+    "director": "~1.2.2",
+    "serve-favicon": "~2.0.1"
   },
   "devDependencies": {},
   "engine": "node >= 0.10.28",
