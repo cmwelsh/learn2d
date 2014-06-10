@@ -7,7 +7,7 @@ are running a Linux distribution you can adapt these instructions accordingly.
 
 * VirtualBox 4.3.12
 * Vagrant 1.6.2
-* docker 0.11.1 & boot2docker 0.9.2 (https://github.com/boot2docker/osx-installer)
+* docker 1.0.0 & boot2docker 1.0.0 (https://github.com/boot2docker/osx-installer)
 * fig 0.4.1 (http://orchardup.github.io/fig/install.html)
 
 ## Add hosts entry
