@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   # Use CoreOS to run Docker
-  config.vm.box = "coreos"
-  config.vm.box_url = "http://storage.core-os.net/coreos/amd64-generic/dev-channel/coreos_production_vagrant.box"
+  config.vm.box = "coreos-alpha"
+  config.vm.box_url = "http://alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json"
 
   # Use static IP for CoreOS VirtualBox VM
   config.vm.network :private_network, ip: "10.1.1.51"
@@ -27,7 +27,10 @@ Vagrant.configure("2") do |config|
   end
 
   # Start docker using systemd
-  config.vm.provision "file", source: "docker-local.service", destination: "/tmp/docker-local.service"
-  config.vm.provision "shell",  inline: "cp /tmp/docker-local.service /media/state/units/docker-local.service"
-  config.vm.provision "shell",  inline: "sudo systemctl restart local-enable.service"
+  config.vm.provision "file", source: "docker-tcp.socket", destination: "/tmp/docker-tcp.socket"
+  config.vm.provision "shell",  inline: "cp /tmp/docker-tcp.socket /etc/systemd/system/docker-tcp.socket"
+  config.vm.provision "shell",  inline: "sudo systemctl enable docker-tcp.socket"
+  config.vm.provision "shell",  inline: "sudo systemctl stop docker"
+  config.vm.provision "shell",  inline: "sudo systemctl start docker-tcp.socket"
+  config.vm.provision "shell",  inline: "sudo systemctl start docker"
 end
