@@ -1,0 +1,13 @@
+# systemd configuration
+# http://coreos.com/docs/launching-containers/building/customizing-docker/
+
+[Unit]
+Description=Docker Socket for the API
+
+[Socket]
+ListenStream=4243
+Service=docker.service
+BindIPv6Only=both
+
+[Install]
+WantedBy=sockets.target
