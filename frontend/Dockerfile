@@ -10,7 +10,7 @@ MAINTAINER Learn2D, Inc. <info@learn2d.com>
 RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 # Set correct environment variables
-ENV HOME /root
+ENV HOME /home/app
 
 # Use baseimage-docker's init process
 CMD ["/sbin/my_init"]
@@ -28,9 +28,6 @@ RUN apt-get update && apt-get install -y \
 
 # Clean up APT when done
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Install Node.js command-line tool: node-supervisor
-RUN npm install -g supervisor@0.6.0
 
 # Install Node.js command-line tool: Bower
 # Redirect to /dev/null to fix https://github.com/orchardup/fig/issues/212
